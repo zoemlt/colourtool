@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Colour Tool</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
     
+    <div class="container">
+        <h1 class="title">Colour Tool</h1>
+        <label for="hex">Colour (Hex)</label>
+        <input type="text" name="hex" id="hexInput" placeholder="#000000">
+
+        <label for="slider" id="sliderText">0%</label>
+        <input type="range" min="0" max="100" value="0" class="slider" id="slider" name="slider">
+        <p>Input Colour</p>
+        <div id="inputColour" class="box"></div>
+        <p>Altered Colour</p>
+        <div id="alteredColour" class="box"></div>
+    </div>
+
     <script src="index.js"></script>
 </body>
 </html>

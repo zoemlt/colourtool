@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #31f79b54;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 30px;
+}
+
+.container {
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 25px;
+}
+
+input[type="text"] {
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: none;
+}
+
+.box {
+    height: 100px;
+    width: 100%;
+    background-color: #3d0caf96;
+    margin-bottom: 25px;
+}
