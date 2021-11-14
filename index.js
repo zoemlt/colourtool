@@ -3,10 +3,6 @@ const inputColour = document.getElementById("inputColour");
 const slider = document.getElementById("slider");
 const sliderText = document.getElementById("sliderText");
 
-slider.addEventListener("input", () => {
-    sliderText.innerText = slider.value + "%";
-})
-
 hexInput.addEventListener("keyup", () => {
     const hex = hexInput.value;
     if(!isValidHex(hex)) return;
@@ -40,11 +36,30 @@ const convertHexToRGB = (hex) => {
 
 const convertRGBToHex = (r, g, b) => {
     const firstPair = ("0" + r.toString(16)).slice(-2);
-    const secondPair = ("0" + r.toString(16)).slice(-2);
-    const thirdPair = ("0" + r.toString(16)).slice(-2);
+    const secondPair = ("0" + g.toString(16)).slice(-2);
+    const thirdPair = ("0" + b.toString(16)).slice(-2);
 
     const hex = "#" + firstPair + secondPair + thirdPair;
     return hex;
 }
 
-console.log(convertRGBToHex(132, 245, 153));
+//increase each r,g,b value by appropriate amount (percentage of 255)
+//use the new r,g,b values to convert to a hex value
+//return the hex value
+
+const alterColour = (hex, percentage) => {
+    const {r, g, b} = convertHexToRGB(hex);
+    
+    const amount = Math.floor((percentage/100) * 255);
+
+    const newR = r + amount;
+    const newG = g + amount;
+    const newB = b + amount;
+    return convertRGBToHex(newR, newG, newB);
+}
+
+console.log(alterColour("#034", 30))
+
+slider.addEventListener("input", () => {
+    sliderText.innerText = `${slider.value}%`;
+})
