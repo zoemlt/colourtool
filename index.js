@@ -83,8 +83,14 @@ alterColor("fff", 10);
 
 slider.addEventListener("input", () => {
     sliderText.innerText = `${slider.value}%`;
+
     if(!isValidHex(hexInput.value)) return;
-    const alteredHex = alterColor(hexInput.value, slider.value);
+
+    const valueAddition = 
+    toggleBtn.classList.contains("toggled") ?
+    -slider.value : slider.value;
+
+    const alteredHex = alterColor(hexInput.value, valueAddition);
     alteredColor.style.backgroundColor = alteredHex;
     alteredColorText.innerText = `Altered Color ${alteredHex}`;
 })
