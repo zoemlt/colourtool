@@ -1,4 +1,13 @@
-let hexInput = document.querySelector("hexInput");
+const hexInput = document.getElementById("hexInput")
+const inputColour = document.getElementById("inputColour")
+
+hexInput.addEventListener("keyup", () => {
+    const hex = hexInput.value;
+    if(!isValidHex(hex)) return;
+
+    const strippedHex = hex.replace("#", "")
+    inputColour.style.backgroundColor = "#" + strippedHex;
+})
 
 const isValidHex = (hex) => {
     if(!hex) return false;
@@ -7,4 +16,4 @@ const isValidHex = (hex) => {
     return strippedHex.length === 3 || strippedHex.length === 6;
 }
 
-isValidHex(hexInput.value);
+console.log(isValidHex(hexInput.value));
