@@ -1,4 +1,4 @@
-# colourtool
+# colortool
 Scrimba - Using vanilla JavaScript 
 
 To do:

@@ -1,14 +1,16 @@
 const hexInput = document.getElementById("hexInput");
-const inputColour = document.getElementById("inputColour");
+const inputColor = document.getElementById("inputColor");
 const slider = document.getElementById("slider");
 const sliderText = document.getElementById("sliderText");
+const alteredColor = document.getElementById("alteredColor");
+const alteredColorText = document.getElementById("alteredColorText");
 
 hexInput.addEventListener("keyup", () => {
     const hex = hexInput.value;
     if(!isValidHex(hex)) return;
 
     const strippedHex = hex.replace("#", "")
-    inputColour.style.backgroundColor = "#" + strippedHex;
+    inputColor.style.backgroundColor = "#" + strippedHex;
 })
 
 const isValidHex = (hex) => {
@@ -33,7 +35,6 @@ const convertHexToRGB = (hex) => {
     return {r, g, b}
 }
 
-
 const convertRGBToHex = (r, g, b) => {
     const firstPair = ("0" + r.toString(16)).slice(-2);
     const secondPair = ("0" + g.toString(16)).slice(-2);
@@ -43,11 +44,7 @@ const convertRGBToHex = (r, g, b) => {
     return hex;
 }
 
-//increase each r,g,b value by appropriate amount (percentage of 255)
-//use the new r,g,b values to convert to a hex value
-//return the hex value
-
-const alterColour = (hex, percentage) => {
+const alterColor = (hex, percentage) => {
     const {r, g, b} = convertHexToRGB(hex);
     
     const amount = Math.floor((percentage/100) * 255);
@@ -55,7 +52,6 @@ const alterColour = (hex, percentage) => {
     const newR = increaseWithin0To255(r, amount);
     const newG = increaseWithin0To255(g, amount);
     const newB = increaseWithin0To255(b, amount);
-    console.log({newR, newG, newB});
     return convertRGBToHex(newR, newG, newB);
 }
 
@@ -67,8 +63,12 @@ const increaseWithin0To255 = (hex, amount) => {
     // return Math.min(255, Math.max(0, hex + amount));  ->  another way to do it
 }
 
-alterColour("fff", 10);
+alterColor("fff", 10);
 
 slider.addEventListener("input", () => {
     sliderText.innerText = `${slider.value}%`;
+    if(!isValidHex(hexInput.value)) return;
+    const alteredHex = alterColor(hexInput.value, slider.value);
+    alteredColor.style.backgroundColor = alteredHex;
+    alteredColorText.innerText = `Altered Color ${alteredHex}`;
 })
