@@ -1,5 +1,11 @@
-const hexInput = document.getElementById("hexInput")
-const inputColour = document.getElementById("inputColour")
+const hexInput = document.getElementById("hexInput");
+const inputColour = document.getElementById("inputColour");
+const slider = document.getElementById("slider");
+const sliderText = document.getElementById("sliderText");
+
+slider.addEventListener("input", () => {
+    sliderText.innerText = slider.value + "%";
+})
 
 hexInput.addEventListener("keyup", () => {
     const hex = hexInput.value;
