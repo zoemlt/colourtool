@@ -12,10 +12,11 @@ body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
     margin: 30px;
+    font-weight: bold;
 }
 
 .container {
-    padding: 0 10px;
+    padding: 0 15px;
 }
 
 label {
@@ -29,13 +30,13 @@ input {
 }
 
 input[type="text"] {
-    padding: 5px 10px;
+    padding: 5px 15px;
     border-radius: 3px;
     border: none;
 }
 
 .box {
-    height: 100px;
+    height: 150px;
     width: 100%;
     background-color: #3d0caf96;
     margin-bottom: 25px;
