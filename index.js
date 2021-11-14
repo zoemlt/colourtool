@@ -11,7 +11,7 @@ const toggleBtn = document.getElementById("toggleBtn");
 const reset = () => {
     slider.value = 0;
     sliderText.innerText = "0%";
-    alteredColor.style.backgroundColor = "#" + hexInput.value;
+    alteredColor.style.backgroundColor = "#" + hexInput.value; //what if the input already has #?
     alteredColorText.innerText = `Altered Color #${hexInput.value}`;
 }
 
