@@ -8,6 +8,13 @@ const lightenText = document.getElementById("lightenText");
 const darkenText = document.getElementById("darkenText");
 const toggleBtn = document.getElementById("toggleBtn");
 
+const reset = () => {
+    slider.value = 0;
+    sliderText.innerText = "0%";
+    alteredColor.style.backgroundColor = "#" + hexInput.value;
+    alteredColorText.innerText = `Altered Color #${hexInput.value}`;
+}
+
 toggleBtn.addEventListener("click", () => {
     if (toggleBtn.classList.contains("toggled")) {
         toggleBtn.classList.remove("toggled");
@@ -17,8 +24,8 @@ toggleBtn.addEventListener("click", () => {
         toggleBtn.classList.add("toggled");
         lightenText.classList.add("unselected");
         darkenText.classList.remove("unselected");
-
     }
+    reset();
 })
 
 hexInput.addEventListener("keyup", () => {
@@ -27,6 +34,7 @@ hexInput.addEventListener("keyup", () => {
 
     const strippedHex = hex.replace("#", "")
     inputColor.style.backgroundColor = "#" + strippedHex;
+    reset();
 })
 
 const isValidHex = (hex) => {
