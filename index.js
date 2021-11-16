@@ -24,7 +24,6 @@ toggleBtn.addEventListener("click", () => {
 })
 
 hexInput.addEventListener("keyup", () => {
-    maximumColorMessage.innerText = "";
     const hex = hexInput.value;
     if(!isValidHex(hex)) return;
 
@@ -112,6 +111,7 @@ const maximumColorValue = (hex) => {
 }
 
 const reset = () => {
+    maximumColorMessage.innerText = "";
     slider.value = 0;
     sliderText.innerText = "0%";
     const strippedHex = hexInput.value.replace("#", "");
