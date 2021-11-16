@@ -8,14 +8,7 @@ const lightenText = document.getElementById("lightenText");
 const darkenText = document.getElementById("darkenText");
 const toggleBtn = document.getElementById("toggleBtn");
 const error = document.getElementById("error");
-
-const reset = () => {
-    slider.value = 0;
-    sliderText.innerText = "0%";
-    const strippedHex = hexInput.value.replace("#", "");
-    alteredColor.style.backgroundColor = "#" + strippedHex;
-    alteredColorText.innerText = `Altered Color #${hexInput.value}`;
-}
+const maximumColorMessage = document.getElementById("maximumColorMessage");
 
 toggleBtn.addEventListener("click", () => {
     if (toggleBtn.classList.contains("toggled")) {
@@ -31,6 +24,7 @@ toggleBtn.addEventListener("click", () => {
 })
 
 hexInput.addEventListener("keyup", () => {
+    maximumColorMessage.innerText = "";
     const hex = hexInput.value;
     if(!isValidHex(hex)) return;
 
@@ -97,8 +91,6 @@ const increaseWithin0To255 = (hex, amount) => {
     // return Math.min(255, Math.max(0, hex + amount));  ->  another way to do it
 }
 
-alterColor("fff", 10);
-
 slider.addEventListener("input", () => {
     sliderText.innerText = `${slider.value}%`;
 
@@ -110,5 +102,19 @@ slider.addEventListener("input", () => {
 
     const alteredHex = alterColor(hexInput.value, valueAddition);
     alteredColor.style.backgroundColor = alteredHex;
+    maximumColorValue(alteredHex);
     alteredColorText.innerText = `Altered Color ${alteredHex}`;
 })
+
+const maximumColorValue = (hex) => {
+    if (hex !== "#ffffff" && hex !== "#000000") return;
+    maximumColorMessage.innerText = `Maximum color value of ${hex} has been reached.`
+}
+
+const reset = () => {
+    slider.value = 0;
+    sliderText.innerText = "0%";
+    const strippedHex = hexInput.value.replace("#", "");
+    alteredColor.style.backgroundColor = "#" + strippedHex;
+    alteredColorText.innerText = `Altered Color #${hexInput.value}`;
+}
