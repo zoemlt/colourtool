@@ -7,6 +7,7 @@ const alteredColorText = document.getElementById("alteredColorText");
 const lightenText = document.getElementById("lightenText");
 const darkenText = document.getElementById("darkenText");
 const toggleBtn = document.getElementById("toggleBtn");
+const error = document.getElementById("error");
 
 const reset = () => {
     slider.value = 0;
@@ -38,10 +39,18 @@ hexInput.addEventListener("keyup", () => {
     reset();
 })
 
+const regexTest = (input) => {
+    let regex = /^[0-9a-f]{3,6}$/i;
+    if (regex.test(input)) return;
+    error.innerText = "Please enter a valid hex.";
+}
+
 const isValidHex = (hex) => {
     if(!hex) return false;
 
+    error.innerText = "";
     const strippedHex = hex.replace("#", "");
+    regexTest(strippedHex);
     return strippedHex.length === 3 || strippedHex.length === 6;
 }
 
