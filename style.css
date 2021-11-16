@@ -26,7 +26,7 @@ label {
 }
 
 input {
-    margin-bottom: 25px;
+    margin-bottom: 5px;
 }
 
 input[type="text"] {
@@ -76,4 +76,10 @@ input[type="text"] {
 
 .unselected {
     opacity: 0.25;
+}
+
+div #error {
+    margin-bottom: 25px;
+    font-size: 75%;
+    margin-left: 2px;
 }
