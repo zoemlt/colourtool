@@ -11,15 +11,9 @@ const error = document.getElementById("error");
 const maximumColorMessage = document.getElementById("maximumColorMessage");
 
 toggleBtn.addEventListener("click", () => {
-    if (toggleBtn.classList.contains("toggled")) {
-        toggleBtn.classList.remove("toggled");
-        lightenText.classList.remove("unselected");
-        darkenText.classList.add("unselected");
-    } else {
-        toggleBtn.classList.add("toggled");
-        lightenText.classList.add("unselected");
-        darkenText.classList.remove("unselected");
-    }
+    toggleBtn.classList.toggle("toggled");
+    lightenText.classList.toggle("unselected");
+    darkenText.classList.toggle("unselected");
     reset();
 })
 
